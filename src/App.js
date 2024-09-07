@@ -1,6 +1,10 @@
+//imports
+
 function App() {
   return (
-    <p>Cata Scallan</p>
-    );
+    <>
+      <p>Probando</p>
+    </>    
+  );
 }
 export default App;
