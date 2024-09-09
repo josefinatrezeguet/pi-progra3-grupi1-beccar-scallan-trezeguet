@@ -1,11 +1,11 @@
-import "./MovieDetail.css";
+import "./Favorites.css";
 import { Link } from "react-router-dom";
 
-const MovieDetail = () => {
+const Favorites = () => {
     return (
         <>
         </>
     )
-}
+   }
    
-export default MovieDetail; 
+export default Favorites; 
