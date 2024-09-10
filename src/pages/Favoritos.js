@@ -1,9 +1,10 @@
 import Favorites from "../components/Favorites/Favorites";
 
 const Favoritos = (props) => {
-    return (
+  return (
+      <>
       <Favorites/>
-    )
-  }
-  
-  export default Favoritos;
+      </>
+  )
+}
+export default Favoritos;

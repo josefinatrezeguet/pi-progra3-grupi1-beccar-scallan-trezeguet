@@ -1,9 +1,10 @@
 import MovieDetail from "../components/MovieDetail/MovieDetail";
 
 const Detalle = (props) => {
-    return (
+  return (
+      <>
       <MovieDetail/>
-    )
+      </>
+  )
 }
-
 export default Detalle;
