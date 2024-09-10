@@ -1,5 +1,5 @@
 import { Switch, Route } from "react-router-dom";
-
+import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home";
 import Busqueda from "./pages/Busqueda";
 import VerTodas from "./pages/VerTodas";
@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 function App() {
   return (
     <>
+      
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/search-results" component={Busqueda}/>
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/favorites" component={Favoritos}/>
           <Route component={NotFound}/>
         </Switch>
+        <Footer />
     </>
   );
 }
