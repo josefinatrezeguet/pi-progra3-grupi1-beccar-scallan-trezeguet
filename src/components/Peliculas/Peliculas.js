@@ -11,7 +11,7 @@ class Peliculas extends Component {
     this.state = {
       populares: [],
       enCartelera: [],
-      verDescripcion: {},
+      verDescripcionId: null, 
     };
   }
 
@@ -31,21 +31,12 @@ class Peliculas extends Component {
       .catch((error) => console.log(error));
   }
 
-  toggleDescripcion = (id) => {
-    this.setState((prevState) => ({
-      verDescripcion: {
-        ...prevState.verDescripcion,
-        [id]: !prevState.verDescripcion[id],
-      },
-    }));
-  };
-
   agregarFavorito = (id) => {
     console.log(`Película ${id} añadida a favoritos`);
   };
 
   render() {
-    const { populares, enCartelera, verDescripcion } = this.state;
+    const { populares, enCartelera, verDescripcionId } = this.state;
 
     return (
       <div className="peliculas">
@@ -60,10 +51,12 @@ class Peliculas extends Component {
                     alt={peli.title}
                   />
                   <h3>{peli.title}</h3>
-                  <button onClick={() => this.toggleDescripcion(peli.id)}>
-                    {verDescripcion[peli.id] ? 'Ocultar Descripción' : 'Ver Descripción'}
+                  <button onClick={() =>
+                    this.setState({ verDescripcionId: verDescripcionId === peli.id ? null : peli.id })
+                  }>
+                    {verDescripcionId === peli.id ? 'Ocultar Descripción' : 'Ver Descripción'}
                   </button>
-                  {verDescripcion[peli.id] && <p>{peli.overview}</p>}
+                  {verDescripcionId === peli.id && <p>{peli.overview}</p>}
                   <a href={`/detail/id/${peli.id}`}>DETALLE</a>
                   <button onClick={() => this.agregarFavorito(peli.id)}>Favorito</button>
                 </article>
@@ -86,10 +79,12 @@ class Peliculas extends Component {
                     alt={peli.title}
                   />
                   <h3>{peli.title}</h3>
-                  <button onClick={() => this.toggleDescripcion(peli.id)}>
-                    {verDescripcion[peli.id] ? 'Ocultar Descripción' : 'Ver Descripción'}
+                  <button onClick={() =>
+                    this.setState({ verDescripcionId: verDescripcionId === peli.id ? null : peli.id })
+                  }>
+                    {verDescripcionId === peli.id ? 'Ocultar Descripción' : 'Ver Descripción'}
                   </button>
-                  {verDescripcion[peli.id] && <p>{peli.overview}</p>}
+                  {verDescripcionId === peli.id && <p>{peli.overview}</p>}
                   <a href={`/detail/id/${peli.id}`}>DETALLE</a>
                   <button onClick={() => this.agregarFavorito(peli.id)}>Favorito</button>
                 </article>
@@ -106,5 +101,3 @@ class Peliculas extends Component {
 }
 
 export default Peliculas;
-
-
