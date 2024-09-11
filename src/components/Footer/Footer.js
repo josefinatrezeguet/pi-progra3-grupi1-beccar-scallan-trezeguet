@@ -1,11 +1,11 @@
 import "./Footer.css";
 
 const Footer = () => {
-    return (
-        <>
-        <p> Rocio Beccar Varela - Josefina Trezeguet - Catalina Scallan </p>
-        </>
-    )
-   }
-   
-export default Footer; 
+  return (
+    <footer>
+      <p>Creado por: Rocío Beccar Varela, Josefina Trezeguet y Catalina Scallan</p> 
+    </footer>
+  );
+};
+
+export default Footer;
