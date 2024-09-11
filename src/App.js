@@ -1,3 +1,4 @@
+import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -7,6 +8,7 @@ import VerTodas from "./pages/VerTodas";
 import Detalle from "./pages/Detalle";
 import Favoritos from "./pages/Favoritos";
 import NotFound from "./pages/NotFound";
+import './css/styles.css'; 
 
 function App() {
   return (

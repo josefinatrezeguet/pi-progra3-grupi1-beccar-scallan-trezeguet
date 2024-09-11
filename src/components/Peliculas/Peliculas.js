@@ -50,7 +50,7 @@ class Peliculas extends Component {
     return (
       <div className="peliculas">
         <section>
-          <h2>Películas populares</h2>
+          <h2>PELÍCULAS POPULARES</h2>
           <div className="contenedor-peliculas">
             {populares.length > 0 ? (
               populares.map((peli) => (
@@ -64,7 +64,7 @@ class Peliculas extends Component {
                     {verDescripcion[peli.id] ? 'Ocultar Descripción' : 'Ver Descripción'}
                   </button>
                   {verDescripcion[peli.id] && <p>{peli.overview}</p>}
-                  <a href={`/detail/id/${peli.id}`}>Detalle</a>
+                  <a href={`/detail/id/${peli.id}`}>DETALLE</a>
                   <button onClick={() => this.agregarFavorito(peli.id)}>Favorito</button>
                 </article>
               ))
@@ -76,7 +76,7 @@ class Peliculas extends Component {
         </section>
 
         <section>
-          <h2>Películas en cartelera</h2>
+          <h2>PELÍCULAS EN CARTELERA</h2>
           <div className="contenedor-peliculas">
             {enCartelera.length > 0 ? (
               enCartelera.map((peli) => (
@@ -90,7 +90,7 @@ class Peliculas extends Component {
                     {verDescripcion[peli.id] ? 'Ocultar Descripción' : 'Ver Descripción'}
                   </button>
                   {verDescripcion[peli.id] && <p>{peli.overview}</p>}
-                  <a href={`/detail/id/${peli.id}`}>Detalle</a>
+                  <a href={`/detail/id/${peli.id}`}>DETALLE</a>
                   <button onClick={() => this.agregarFavorito(peli.id)}>Favorito</button>
                 </article>
               ))

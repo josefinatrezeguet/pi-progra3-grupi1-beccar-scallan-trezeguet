@@ -3,14 +3,15 @@ import Navbar from "../Navbar/Navbar";
 
 const Header = () => {
     return (
-        <header>
-            <div className="logo">
-                <h1>PENSAR NOMBRE</h1> 
-                <h1>PENSAR LOGO</h1> 
-            </div>
+        <div>
+            <header>
+                <div className="logo">
+                    <img src="/notflix.png" className="logo-img" alt="notflix" />
+                </div>
+            </header>
             <Navbar />
-        </header>
-    )
-   }
-   
-export default Header; 
+        </div>
+    );
+}
+
+export default Header;
