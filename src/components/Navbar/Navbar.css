@@ -1,0 +1,38 @@
+nav {
+    background-color: #333;
+    padding: 1rem;
+  }
+  
+.main-nav {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+.main-nav li {
+    margin: 0 10px;
+  }
+  
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+.main-nav a:hover {
+    color: #f39c12;
+  }
+  
+.user {
+    display: flex;
+    align-items: center;
+  }
+  
+.user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+  }
+  
