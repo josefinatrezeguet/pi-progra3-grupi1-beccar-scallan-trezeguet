@@ -1,10 +1,12 @@
+import React from "react";
 import Favorites from "../components/Favorites/Favorites";
 
-const Favoritos = (props) => {
+const Favoritos = () => {
   return (
-      <>
-      <Favorites/>
-      </>
-  )
-}
+    <div className="favoritos-page">
+      <Favorites />
+    </div>
+  );
+};
+
 export default Favoritos;

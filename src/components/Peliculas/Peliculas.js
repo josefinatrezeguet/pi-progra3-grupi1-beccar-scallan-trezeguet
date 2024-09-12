@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PeliculaCard from "../PeliculaCard/PeliculaCard"; 
 import "./Peliculas.css";
 
 const API_KEY = '3fdc54d209865d0fa99ee5f520db7d2b';
@@ -11,7 +12,7 @@ class Peliculas extends Component {
     this.state = {
       populares: [],
       enCartelera: [],
-      verDescripcionId: null, 
+      favoritos: [],
     };
   }
 
@@ -29,14 +30,28 @@ class Peliculas extends Component {
         this.setState({ enCartelera: data.results.slice(0, 5) });
       })
       .catch((error) => console.log(error));
+
+    const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+    this.setState({ favoritos });
   }
 
-  agregarFavorito = (id) => {
-    console.log(`Película ${id} añadida a favoritos`);
+  agregarFav = (id) => {
+    let { favoritos } = this.state;
+    if (favoritos.includes(id)) {
+      favoritos = favoritos.filter((favoritoId) => favoritoId !== id);
+    } else {
+      favoritos.push(id);
+    }
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+    this.setState({ favoritos });
+  };
+
+  esFavorito = (id) => {
+    return this.state.favoritos.includes(id);
   };
 
   render() {
-    const { populares, enCartelera, verDescripcionId } = this.state;
+    const { populares, enCartelera } = this.state;
 
     return (
       <div className="peliculas">
@@ -45,21 +60,12 @@ class Peliculas extends Component {
           <div className="contenedor-peliculas">
             {populares.length > 0 ? (
               populares.map((peli) => (
-                <article key={peli.id} className="pelicula">
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500${peli.poster_path}`}
-                    alt={peli.title}
-                  />
-                  <h3>{peli.title}</h3>
-                  <button onClick={() =>
-                    this.setState({ verDescripcionId: verDescripcionId === peli.id ? null : peli.id })
-                  }>
-                    {verDescripcionId === peli.id ? 'Ocultar Descripción' : 'Ver Descripción'}
-                  </button>
-                  {verDescripcionId === peli.id && <p>{peli.overview}</p>}
-                  <a href={`/detail/id/${peli.id}`}>DETALLE</a>
-                  <button onClick={() => this.agregarFavorito(peli.id)}>Favorito</button>
-                </article>
+                <PeliculaCard
+                  key={peli.id}
+                  pelicula={peli}
+                  esFavorito={this.esFavorito}
+                  agregarFav={this.agregarFav}
+                />
               ))
             ) : (
               <p>Cargando...</p>
@@ -73,21 +79,12 @@ class Peliculas extends Component {
           <div className="contenedor-peliculas">
             {enCartelera.length > 0 ? (
               enCartelera.map((peli) => (
-                <article key={peli.id} className="pelicula">
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500${peli.poster_path}`}
-                    alt={peli.title}
-                  />
-                  <h3>{peli.title}</h3>
-                  <button onClick={() =>
-                    this.setState({ verDescripcionId: verDescripcionId === peli.id ? null : peli.id })
-                  }>
-                    {verDescripcionId === peli.id ? 'Ocultar Descripción' : 'Ver Descripción'}
-                  </button>
-                  {verDescripcionId === peli.id && <p>{peli.overview}</p>}
-                  <a href={`/detail/id/${peli.id}`}>DETALLE</a>
-                  <button onClick={() => this.agregarFavorito(peli.id)}>Favorito</button>
-                </article>
+                <PeliculaCard
+                  key={peli.id}
+                  pelicula={peli}
+                  esFavorito={this.esFavorito}
+                  agregarFav={this.agregarFav}
+                />
               ))
             ) : (
               <p>Cargando...</p>
