@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './MovieDetail.css';
 
-const MovieDetail = ({ pelicula }) => {
+const MovieDetail = ({ pelicula, agregarFavorito }) => {
   if (!pelicula) {
     return <p>No hay detalles disponibles</p>;
   }
@@ -15,9 +14,13 @@ const MovieDetail = ({ pelicula }) => {
           alt={pelicula.title}
         />
         <h4>{pelicula.title}</h4>
+        <p><strong>Calificación:</strong> {pelicula.vote_average}</p>
+        <p><strong>Fecha de lanzamiento:</strong> {pelicula.release_date}</p>
+        <p><strong>Duración:</strong> {pelicula.runtime} minutos</p>
+        <p><strong>Género:</strong> {pelicula.genres.map(g => g.name).join(', ')}</p>
         <p>{pelicula.overview}</p>
-        <p>Fecha de lanzamiento: {pelicula.release_date}</p>
-        <Link to="/">Volver al inicio</Link>
+        <button onClick={agregarFavorito}>Agregar a Favoritos</button>
+        <a href="/">Volver al inicio</a>
       </div>
     </section>
   );
