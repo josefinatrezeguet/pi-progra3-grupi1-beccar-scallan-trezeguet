@@ -1,10 +1,10 @@
 import React from "react";
 import Peliculas from "../components/Peliculas/Peliculas";
-import Form from "../components/Form/Form";
+import Form from "../components/Forms/Form";
 const Home = (props) => {
   return (
       <>
-        <Form/>
+       <Form/>
         <div className="home">
             <Peliculas/>
             
