@@ -14,7 +14,6 @@ function App() {
   return (
     <>
       <Header /> 
-
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route path="/search-results" component={Busqueda}/>
@@ -23,7 +22,6 @@ function App() {
         <Route exact path="/favorites" component={Favoritos}/>
         <Route component={NotFound}/>
       </Switch>
-
       <Footer /> 
     </>
   );
