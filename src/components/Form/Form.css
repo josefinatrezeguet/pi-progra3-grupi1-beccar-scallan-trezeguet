@@ -1,0 +1,10 @@
+form{
+    flex-direction: wrap;
+    align-items:center; 
+    margin: 10px; 
+    }
+button{
+    flex-direction: wrap;
+    align-items:center; 
+    margin: 10px;  
+}
