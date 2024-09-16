@@ -31,8 +31,9 @@ class Peliculas extends Component {
       })
       .catch((error) => console.log(error));
 
-    const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-    this.setState({ favoritos });
+      const favoritos = localStorage.getItem("favoritos") 
+      ? JSON.parse(localStorage.getItem("favoritos")) : [];
+        this.setState({ favoritos });
   }
 
   agregarFav = (id) => {

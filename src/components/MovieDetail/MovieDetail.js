@@ -35,8 +35,9 @@ class MovieDetail extends Component {
     }
 
     chequeoFav = (id) => {
-        const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-        this.setState({ esFavorito: favoritos.includes(id) });
+        const favoritos = localStorage.getItem("favoritos") 
+        ? JSON.parse(localStorage.getItem("favoritos")) : [];
+              this.setState({ esFavorito: favoritos.includes(id) });
     }
 
     agregarFav = () => {

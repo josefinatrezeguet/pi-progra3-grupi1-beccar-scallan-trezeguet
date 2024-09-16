@@ -13,8 +13,9 @@ class Favorites extends Component {
   }
 
   componentDidMount() {
-    const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-    this.setState({ favoritos });
+    const favoritos = localStorage.getItem("favoritos") 
+    ? JSON.parse(localStorage.getItem("favoritos")) : [];
+      this.setState({ favoritos });
 
     for (let i = 0; i < favoritos.length; i++) {
       this.cargarDetalle(favoritos[i]);
