@@ -1,15 +1,19 @@
 import React from "react";
-import Peliculas from "../components/Peliculas/Peliculas";
-import Form from "../components/Forms/Form";
-const Home = (props) => {
-  return (
-      <>
-       <Form/>
-        <div className="home">
-            <Peliculas/>
-            
-        </div>
-      </>
-  );
+import { Component } from "react";
+import Form from "../components/Forms/Form"
+
+
+class Home extends Component{
+    constructor(props){
+        super(props)
+    }
+    render(){
+      return(
+        <>
+          <Form Form history ={this.props.history}/>
+        </>
+      )
+    }
+
 }
 export default Home;

@@ -1,33 +1,43 @@
 import { Component } from "react";
 import "./Form.css"
+
 class Form extends Component{
-    constructor(){
-        super();
-            this.state = {
-                inputName : ""
-            }
-        }
+    constructor(props){
+        super(props);
+        
+        this.state = {
+            query: "",
+        };
+    }
     
-    handleNameChange(event) {
+    handleCancelSubmit(e){
+        e.preventDefault()
+    };
+
+    handleFormChange(event) {
         this.setState({
-            inputName: event.target.value
-        } , ()=> console.log(this.state.inputName))
+            query: event.target.value
+        }) 
     }
 
     handleFormSubmit(){
-        console.log("SE ENVIO EL FORMULARIO", this.state.inputName);
+        this.props.history.push("/search",{query: this.state.query})
     }
 
     render(){
         return (
-            <form onSubmit={(event) => event.preventDefault()}>
-                <input
-                    onChange={(event)=> this.handleNameChange(event) }
-                    name = "userName"
-                    value={this.state.inputName}/>
-                <button
-                    type="submit"> Buscar </button>
-            </form>
+            <>
+            <div>
+                <form onSubmit={(event) => this.handleCancelSubmit(event)}>
+                    <input
+                        name = "query"
+                        onChange={(event)=> this.handleNameChange(event) }
+                        value={this.state.query}/>
+                    <button OnClick = {()=> this.handleFormSubmit()}> Search </button>
+                
+                </form>
+            </div>
+            </>
         )
     }
 }
