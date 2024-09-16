@@ -8,23 +8,23 @@ import VerTodas from "./pages/VerTodas";
 import Detalle from "./pages/Detalle";
 import Favoritos from "./pages/Favoritos";
 import NotFound from "./pages/NotFound";
-import './css/styles.css'; 
+import './css/styles.css';
 
 function App() {
-  return (
-    <>
-      <Header /> 
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/search-results" component={Busqueda}/>
-        <Route exact path="/more/category/:category" component={VerTodas}/>
-        <Route path="/detail/id/:id" component={Detalle}/>
-        <Route exact path="/favorites" component={Favoritos}/>
-        <Route component={NotFound}/>
-      </Switch>
-      <Footer /> 
-    </>
-  );
+    return (
+        <>
+            <Header />
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/search-results" component={Busqueda} />
+                <Route exact path="/more/category/:category" component={VerTodas} />
+                <Route path="/detail/id/:id" component={Detalle} />
+                <Route exact path="/favorites" component={Favoritos} />
+                <Route component={NotFound} />
+            </Switch>
+            <Footer />
+        </>
+    );
 }
 
 export default App;
