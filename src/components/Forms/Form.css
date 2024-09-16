@@ -1,10 +1,15 @@
-form{
-    flex-direction: wrap;
-    align-items:center; 
+form {
+    display: flex;
+    justify-content: flex-end; 
+    flex-direction: row;
+    align-items: center; 
     margin: 10px; 
-    }
-button{
-    flex-direction: wrap;
-    align-items:center; 
+}
+
+input {
+    margin-right: 10px; 
+}
+
+button {
     margin: 10px;  
 }

@@ -8,7 +8,6 @@ class Form extends Component{
             }
         }
     
-   
     handleNameChange(event) {
         this.setState({
             inputName: event.target.value
@@ -27,7 +26,7 @@ class Form extends Component{
                     name = "userName"
                     value={this.state.inputName}/>
                 <button
-                    type="submit"> Enviar </button>
+                    type="submit"> Buscar </button>
             </form>
         )
     }
