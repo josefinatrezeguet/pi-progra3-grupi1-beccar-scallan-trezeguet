@@ -17,3 +17,8 @@ body {
     background-color: whitesmoke;
     margin: 0px;
 }
+
+p{
+    color: black;
+    margin-left: 10px;
+}
