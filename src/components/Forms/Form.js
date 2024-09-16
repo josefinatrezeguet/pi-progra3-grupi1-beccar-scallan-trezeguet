@@ -31,7 +31,7 @@ class Form extends Component{
                 <form onSubmit={(event) => this.handleCancelSubmit(event)}>
                     <input
                         name = "query"
-                        onChange={(event)=> this.handleNameChange(event) }
+                        onChange={(event)=> this.handleFormChange(event) }
                         value={this.state.query}/>
                     <button OnClick = {()=> this.handleFormSubmit()}> Search </button>
                 
