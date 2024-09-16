@@ -12,11 +12,12 @@ class Busqueda extends Component {
 
     componentDidMount() {
         const query = this.props.location.state.query; 
-        fetch(" https://api.themoviedb.org/3/search/movie?api_key=3fdc54d209865d0fa99ee5f520db7d2b&query=${query}") 
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=3fdc54d209865d0fa99ee5f520db7d2b&query=${query}`) 
         .then((response) => response.json())
             .then((data) => {
+                const peliConImagen = data.results.filter(movie => movie.poster_path);
                 this.setState({
-                    movies: data.results, 
+                    movies: peliConImagen, 
                     isLoading: false,
                 });
             })

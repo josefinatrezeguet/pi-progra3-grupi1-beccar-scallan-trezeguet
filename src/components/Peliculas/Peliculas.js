@@ -61,7 +61,7 @@ class Peliculas extends Component {
       <div className="peliculas">
         {movies ? (
           <section>
-            <h2>RESULTADOS DE BUSQUEDA</h2>
+            <h2>RESULTADOS DE BÚSQUEDA</h2>
             <div className="contenedor-peliculas">
               {movies.length > 0 ? (
                 movies.map((peli) => (
