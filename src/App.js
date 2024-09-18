@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home";
 import Busqueda from "./pages/Busqueda";
-import Populares from "./pages/PeliculasPopulares";
+import Peliculaspopulares from "./pages/PeliculasPopulares";
 import Detalle from "./pages/Detalle";
 import Favoritos from "./pages/Favoritos";
 import NotFound from "./pages/NotFound";
@@ -17,7 +17,7 @@ function App() {
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route path="/search-results" component={Busqueda} />
-                <Route exact path="/more/category/:category" component={Populares} />
+                <Route exact path="/more/category/:category" component={Peliculaspopulares} />
                 <Route path="/detail/id/:id" component={Detalle} />
                 <Route exact path="/favorites" component={Favoritos} />
                 <Route component={NotFound} />
