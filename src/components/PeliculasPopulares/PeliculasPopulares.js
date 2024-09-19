@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PeliculaCard from "../PeliculaCard/PeliculaCard";
-import "./Peliculas.css";
+import "./PeliculasPopulares.css";
 
 const API_KEY = '3fdc54d209865d0fa99ee5f520db7d2b';
 const URLS = {
