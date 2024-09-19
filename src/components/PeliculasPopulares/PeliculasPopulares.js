@@ -4,8 +4,8 @@ import "./PeliculasPopulares.css";
 
 const API_KEY = '3fdc54d209865d0fa99ee5f520db7d2b';
 const URLS = {
-  popular: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
-  now_playing:`⁠https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`,
+  popular:`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
+  now_playing:`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`,
 };
 
 class PeliculasPopulares extends Component {
@@ -20,39 +20,20 @@ class PeliculasPopulares extends Component {
   }
 
   componentDidMount() {
-    const { category } = this.props.match.params;
+    const { category } = this.props.match.params;  
     const url = URLS[category];
 
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          movies: data.results,
-          filteredMovies: data.results,
-        });
-      })
-      .catch((error) => console.log(error));
-
-    const favoritos = localStorage.getItem("favoritos")
-      ? JSON.parse(localStorage.getItem("favoritos"))
-      : [];
-    this.setState({ favoritos });
-  }
-
-  esFavorito = (id) => {
-    return this.state.favoritos.includes(id);
-  };
-
-  agregarFav = (id) => {
-    let { favoritos } = this.state;
-    if (favoritos.includes(id)) {
-      favoritos = favoritos.filter((favoritoId) => favoritoId !== id);
-    } else {
-      favoritos.push(id);
-    }
-    localStorage.setItem("favoritos", JSON.stringify(favoritos));
-    this.setState({ favoritos });
-  };
+    if (url) {  
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          this.setState({
+            movies: data.results,
+            filteredMovies: data.results,
+          });
+        })
+        .catch((error) => console.log(error));
+    };
 
   handleFilterChange = (event) => {
     const filterValue = event.target.value.toLowerCase();
@@ -65,12 +46,12 @@ class PeliculasPopulares extends Component {
   };
 
   render() {
-    const { filteredMovies, filterValue } = this.state;
+    const { filteredMovies } = this.state;
     const { category } = this.props.match.params;
 
     const pageTitle = category === 'popular'
       ? 'Películas populares' : category === 'now_playing'
-      ? 'Películas en cartelera' : 'Películas'; 
+      ? 'Películas en cartelera' : 'Películas';
 
     return (
       <div className="peliculas-page">
@@ -91,7 +72,7 @@ class PeliculasPopulares extends Component {
         </div>
       </div>
     );
-  }
+  };
 }
 
 export default PeliculasPopulares;
