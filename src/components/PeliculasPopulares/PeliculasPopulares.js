@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import PeliculaCard from "../PeliculaCard/PeliculaCard";
-import "./PeliculasPopulares.css";
+import "./Peliculas.css";
 
 const API_KEY = '3fdc54d209865d0fa99ee5f520db7d2b';
 const URLS = {
-  popular:`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
-  now_playing:`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`,
+  popular: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
+  now_playing: `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`,
 };
 
 class PeliculasPopulares extends Component {
@@ -20,10 +20,10 @@ class PeliculasPopulares extends Component {
   }
 
   componentDidMount() {
-    const { category } = this.props.match.params;  
+    const { category } = this.props.match.params;
     const url = URLS[category];
 
-    if (url) {  
+    if (url) {
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
@@ -33,7 +33,8 @@ class PeliculasPopulares extends Component {
           });
         })
         .catch((error) => console.log(error));
-    };
+    }
+  } 
 
   handleFilterChange = (event) => {
     const filterValue = event.target.value.toLowerCase();
@@ -50,8 +51,10 @@ class PeliculasPopulares extends Component {
     const { category } = this.props.match.params;
 
     const pageTitle = category === 'popular'
-      ? 'Películas populares' : category === 'now_playing'
-      ? 'Películas en cartelera' : 'Películas';
+      ? 'Películas populares'
+      : category === 'now_playing'
+      ? 'Películas en cartelera'
+      : 'Películas';
 
     return (
       <div className="peliculas-page">
@@ -72,7 +75,7 @@ class PeliculasPopulares extends Component {
         </div>
       </div>
     );
-  };
+  }
 }
 
 export default PeliculasPopulares;
