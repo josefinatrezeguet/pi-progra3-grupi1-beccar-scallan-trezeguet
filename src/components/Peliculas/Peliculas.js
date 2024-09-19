@@ -3,8 +3,8 @@ import PeliculaCard from "../PeliculaCard/PeliculaCard";
 import "./Peliculas.css";
 
 const API_KEY = '3fdc54d209865d0fa99ee5f520db7d2b';
-const URL_POPULAR =`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}⁠`;
-const URL_NOW_PLAYING =`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`;
+const URL_POPULAR = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`;
+const URL_NOW_PLAYING = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`;
 
 class Peliculas extends Component {
   constructor(props) {

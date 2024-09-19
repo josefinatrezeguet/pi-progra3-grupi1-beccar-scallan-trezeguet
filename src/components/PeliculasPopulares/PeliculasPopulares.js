@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PeliculaCard from "../PeliculaCard/PeliculaCard";
-import "./Peliculas.css";
+import "./PeliculasPopulares.css"
 
 const API_KEY = '3fdc54d209865d0fa99ee5f520db7d2b';
 const URLS = {
@@ -20,10 +20,10 @@ class PeliculasPopulares extends Component {
   }
 
   componentDidMount() {
-    const { category } = this.props.match.params;
+    const { category } = this.props.match.params;  
     const url = URLS[category];
 
-    if (url) {
+    if (url) {  
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
@@ -34,7 +34,24 @@ class PeliculasPopulares extends Component {
         })
         .catch((error) => console.log(error));
     }
-  } 
+    const favoritos = localStorage.getItem("favoritos") ? JSON.parse(localStorage.getItem("favoritos")) : [];
+    this.setState({ favoritos });
+  }
+
+  agregarFav = (id) => {
+    let { favoritos } = this.state;
+    if (favoritos.includes(id)) {
+      favoritos = favoritos.filter((favoritoId) => favoritoId !== id);
+    } else {
+      favoritos.push(id);
+    }
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+    this.setState({ favoritos });
+  };
+
+  esFavorito = (id) => {
+    return this.state.favoritos.includes(id);
+  };
 
   handleFilterChange = (event) => {
     const filterValue = event.target.value.toLowerCase();
@@ -51,10 +68,8 @@ class PeliculasPopulares extends Component {
     const { category } = this.props.match.params;
 
     const pageTitle = category === 'popular'
-      ? 'Películas populares'
-      : category === 'now_playing'
-      ? 'Películas en cartelera'
-      : 'Películas';
+      ? 'Películas populares' : category === 'now_playing'
+      ? 'Películas en cartelera' : 'Películas';
 
     return (
       <div className="peliculas-page">
