@@ -1,0 +1,89 @@
+.peliculas-page {
+    padding: 20px;
+    background-color: #141414;
+}
+
+h2 {
+    font-size: 25px;
+    font-weight: lighter;
+    margin-bottom: 20px;
+    color: whitesmoke;
+}
+
+input {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #d30000;
+    border-radius: 5px;
+    color: #333;
+}
+
+.contenedor-peliculas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.pelicula {
+    width: 250px;
+    text-align: center;
+    background: #303030;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 12px;
+}
+
+.pelicula:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.pelicula img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+h3 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+    margin: 10px 0;
+    color: whitesmoke;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #d30000;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #a70000;
+}
+
+a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #d30000;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #a70000;
+}
+
+p {
+    font-size: 14px;
+    color: #b3b3b3;
+}
