@@ -13,8 +13,7 @@ class Favorites extends Component {
   }
 
   componentDidMount() {
-    const favoritos = localStorage.getItem("favoritos") 
-    ? JSON.parse(localStorage.getItem("favoritos")) : [];
+    const favoritos = localStorage.getItem("favoritos") ? JSON.parse(localStorage.getItem("favoritos")) : [];
       this.setState({ favoritos });
 
     for (let i = 0; i < favoritos.length; i++) {
@@ -38,7 +37,7 @@ class Favorites extends Component {
     localStorage.setItem("favoritos", JSON.stringify(nuevosFavs));
 
     const nuevasPelisFav = this.state.pelisFav.filter((peli) => peli.id !== id);
-    this.setState({ favoritos: nuevosFavs, pelisFav: nuevasPelisFav });
+      this.setState({ favoritos: nuevosFavs, pelisFav: nuevasPelisFav });
   };
 
   mostrarDescrip = (id) => {

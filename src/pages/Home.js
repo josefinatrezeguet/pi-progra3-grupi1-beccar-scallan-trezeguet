@@ -1,6 +1,6 @@
 import React from "react";
 import { Component } from "react";
-import Form from "../components/Forms/Form";
+import Form from "../components/Form/Form";
 import Peliculas from "../components/Peliculas/Peliculas";
 
 class Home extends Component {
