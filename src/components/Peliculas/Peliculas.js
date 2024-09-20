@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import PeliculaCard from "../PeliculaCard/PeliculaCard";
 import "./Peliculas.css";
 
@@ -45,7 +46,7 @@ class Peliculas extends Component {
       favoritos.push(id);
     }
     localStorage.setItem("favoritos", JSON.stringify(favoritos));
-    this.setState({ favoritos });
+      this.setState({ favoritos });
   };
 
   esFavorito = (id) => {
@@ -94,7 +95,7 @@ class Peliculas extends Component {
                   <p>Cargando...</p>
                 )}
               </div>
-              <a href="/more/category/popular">VER MÁS PELÍCULAS POPULARES</a>
+              <Link to="/more/category/popular">VER MÁS PELÍCULAS POPULARES</Link>
             </section>
 
             <section>
@@ -113,7 +114,7 @@ class Peliculas extends Component {
                   <p>Cargando...</p>
                 )}
               </div>
-              <a href="/more/category/now_playing">VER MÁS PELÍCULAS EN CARTELERA</a>
+              <Link to="/more/category/now_playing">VER MÁS PELÍCULAS EN CARTELERA</Link>
             </section>
           </>
         )}

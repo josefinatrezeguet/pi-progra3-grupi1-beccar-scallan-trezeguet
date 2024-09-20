@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom"; 
 
 class PeliculaCard extends Component {
   constructor(props) {
@@ -34,8 +35,8 @@ class PeliculaCard extends Component {
 
         {verDescripcionId === pelicula.id && <p>{pelicula.overview}</p>}
 
-        <a href={`/detail/id/${pelicula.id}`}>DETALLE</a>
-
+        <Link to={`/detail/id/${pelicula.id}`}>DETALLE</Link> 
+        
         {esFavorito(pelicula.id) ? (
           <button onClick={() => agregarFav(pelicula.id)}>Quitar de favoritos</button>
         ) : (

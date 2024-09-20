@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PeliculaCard from "../PeliculaCard/PeliculaCard";
-import "./PeliculasPopulares.css"
+import "./VerMasComponent.css";
 
 const API_KEY = '3fdc54d209865d0fa99ee5f520db7d2b';
 const URLS = {
@@ -8,7 +8,7 @@ const URLS = {
   now_playing: `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`,
 };
 
-class PeliculasPopulares extends Component {
+class VerMasComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +20,7 @@ class PeliculasPopulares extends Component {
   }
 
   componentDidMount() {
-    const { category } = this.props.match.params;  
+    const { category } = this.props.match.params; 
     const url = URLS[category];
 
     if (url) {  
@@ -34,8 +34,9 @@ class PeliculasPopulares extends Component {
         })
         .catch((error) => console.log(error));
     }
+
     const favoritos = localStorage.getItem("favoritos") ? JSON.parse(localStorage.getItem("favoritos")) : [];
-    this.setState({ favoritos });
+      this.setState({ favoritos });
   }
 
   agregarFav = (id) => {
@@ -46,7 +47,7 @@ class PeliculasPopulares extends Component {
       favoritos.push(id);
     }
     localStorage.setItem("favoritos", JSON.stringify(favoritos));
-    this.setState({ favoritos });
+      this.setState({ favoritos });
   };
 
   esFavorito = (id) => {
@@ -67,9 +68,8 @@ class PeliculasPopulares extends Component {
     const { filteredMovies } = this.state;
     const { category } = this.props.match.params;
 
-    const pageTitle = category === 'popular'
-      ? 'Películas populares' : category === 'now_playing'
-      ? 'Películas en cartelera' : 'Películas';
+    const pageTitle = category === 'popular' ? 'Películas populares' : category === 'now_playing' ? 'Películas en cartelera' 
+    : 'Películas';
 
     return (
       <div className="peliculas-page">
@@ -93,4 +93,4 @@ class PeliculasPopulares extends Component {
   }
 }
 
-export default PeliculasPopulares;
+export default VerMasComponent;

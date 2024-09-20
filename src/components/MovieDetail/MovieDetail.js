@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./MovieDetail.css";
+import { Link } from "react-router-dom"; 
 
 class MovieDetail extends Component {
     constructor(props) {
@@ -35,9 +36,8 @@ class MovieDetail extends Component {
     }
 
     chequeoFav = (id) => {
-        const favoritos = localStorage.getItem("favoritos") 
-        ? JSON.parse(localStorage.getItem("favoritos")) : [];
-              this.setState({ esFavorito: favoritos.includes(id) });
+        const favoritos = localStorage.getItem("favoritos") ? JSON.parse(localStorage.getItem("favoritos")) : [];
+            this.setState({ esFavorito: favoritos.includes(id) });
     }
 
     agregarFav = () => {
@@ -52,7 +52,7 @@ class MovieDetail extends Component {
         }
 
         localStorage.setItem("favoritos", JSON.stringify(favoritos));
-        this.setState({ esFavorito: !esFavorito });
+            this.setState({ esFavorito: !esFavorito });
     }
 
     render() {
@@ -82,7 +82,7 @@ class MovieDetail extends Component {
                     <button onClick={this.agregarFav}>
                         {esFavorito ? "Quitar de favoritos" : "Agregar a favoritos"}
                     </button>
-                    <a href="/">Volver al inicio</a>
+                    <Link to="/">Volver al inicio</Link> 
                 </div>
             </section>
         );
