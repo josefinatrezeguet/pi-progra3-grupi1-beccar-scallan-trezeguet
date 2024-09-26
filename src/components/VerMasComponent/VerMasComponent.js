@@ -64,7 +64,7 @@ class VerMasComponent extends Component {
   };
 
   render() {
-    const { filteredMovies } = this.state;
+    const { filteredMovies, filterValue } = this.state;
     const { category } = this.props.match.params;
 
     const pageTitle = category === 'popular' ? 'Películas populares' : category === 'now_playing' ? 'Películas en cartelera' 
@@ -73,6 +73,14 @@ class VerMasComponent extends Component {
     return (
       <div className="peliculas-page">
         <h2>{pageTitle}</h2>
+        <div>
+          <input 
+            type="text" 
+            value={filterValue} 
+            onChange={this.handleFilterChange} 
+            placeholder="Buscar película..." 
+          />
+        </div>
         <div className="contenedor-peliculas">
           {filteredMovies.length > 0 ? (
             filteredMovies.map((peli) => (
