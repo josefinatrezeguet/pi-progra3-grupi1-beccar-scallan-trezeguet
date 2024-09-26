@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PeliculaCard from "../PeliculaCard/PeliculaCard";
+import "./VerMasComponent.css";
 
 const API_KEY = '3fdc54d209865d0fa99ee5f520db7d2b';
 const URLS = {
@@ -15,6 +16,7 @@ class VerMasComponent extends Component {
       filteredMovies: [],
       filterValue: "",
       favoritos: [],
+      paginaActual: 1,
     };
   }
 
@@ -27,13 +29,13 @@ class VerMasComponent extends Component {
   componentDidUpdate(prevProps) {
     const { category } = this.props.match.params;
     if (category !== prevProps.match.params.category) {
-      this.loadMovies();
+      this.setState({ paginaActual: 1 }, this.loadMovies); 
     }
   }
 
   loadMovies = () => {
     const { category } = this.props.match.params;
-    const url = URLS[category];
+    const url = `${URLS[category]}&page=${this.state.paginaActual}`;
 
     if (url) {
       fetch(url)
@@ -48,6 +50,26 @@ class VerMasComponent extends Component {
     }
   };
 
+  handleLoadMore = () => {
+    const { category } = this.props.match.params;
+    const url = `${URLS[category]}&page=${this.state.paginaActual}`;
+  
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        const newMovies = data.results.filter((newMovie) => 
+          !this.state.filteredMovies.some((existingMovie) => existingMovie.id === newMovie.id)
+        );
+  
+        this.setState((prevState) => ({
+          movies: prevState.movies.concat(newMovies), 
+          filteredMovies: prevState.filteredMovies.concat(newMovies), 
+          paginaActual: prevState.paginaActual + 1
+        }));
+      })
+      .catch((err) => console.log(err));
+  };
+  
   agregarFav = (id) => {
     let { favoritos } = this.state;
     if (favoritos.includes(id)) {
@@ -77,13 +99,13 @@ class VerMasComponent extends Component {
     const { filteredMovies, filterValue } = this.state;
     const { category } = this.props.match.params;
 
-    const pageTitle = category === 'popular' ? 'Películas populares' : category === 'now_playing' ? 'Películas en cartelera' 
-    : 'Películas';
+    const pageTitle = category === 'popular' ? 'Películas populares' : category === 'now_playing' ? 'Películas en cartelera' : 'Películas';
+    const mostrarBotonCargarMas = filterValue === "" && filteredMovies.length > 0;
 
     return (
       <div className="peliculas-page">
         <h2>{pageTitle}</h2>
-        <div>
+        <div className="filtro-container">
           <input 
             type="text" 
             value={filterValue} 
@@ -105,6 +127,13 @@ class VerMasComponent extends Component {
             <p>No se encontraron películas.</p>
           )}
         </div>
+        {mostrarBotonCargarMas && (
+          <div className="boton-cargar-mas">
+            <button onClick={this.handleLoadMore}>
+              Cargar más
+            </button>
+          </div>
+        )}
       </div>
     );
   }
