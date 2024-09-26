@@ -19,10 +19,23 @@ class VerMasComponent extends Component {
   }
 
   componentDidMount() {
-    const { category } = this.props.match.params; 
+    this.loadMovies();
+    const favoritos = localStorage.getItem("favoritos") ? JSON.parse(localStorage.getItem("favoritos")) : [];
+    this.setState({ favoritos });
+  }
+
+  componentDidUpdate(prevProps) {
+    const { category } = this.props.match.params;
+    if (category !== prevProps.match.params.category) {
+      this.loadMovies();
+    }
+  }
+
+  loadMovies = () => {
+    const { category } = this.props.match.params;
     const url = URLS[category];
 
-    if (url) {  
+    if (url) {
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
@@ -33,10 +46,7 @@ class VerMasComponent extends Component {
         })
         .catch((error) => console.log(error));
     }
-
-    const favoritos = localStorage.getItem("favoritos") ? JSON.parse(localStorage.getItem("favoritos")) : [];
-      this.setState({ favoritos });
-  }
+  };
 
   agregarFav = (id) => {
     let { favoritos } = this.state;
@@ -78,7 +88,7 @@ class VerMasComponent extends Component {
             type="text" 
             value={filterValue} 
             onChange={this.handleFilterChange} 
-            placeholder="Buscar película..." 
+            placeholder="Filtrar resultados..." 
           />
         </div>
         <div className="contenedor-peliculas">
